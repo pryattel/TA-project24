@@ -1,0 +1,45 @@
+const dateFormattedET = function(folkMonth){
+	let timeNow = new Date();
+	const monthNamesET = ['jaanuar', 'veebruar', 'märts', 'aprill', 'mai', 'juuni', 'juuli', 'august', 'september', 'oktoober', 'november', 'detsember'];
+	//return timeNow.getDate() + '. ' + monthNamesET[timeNow.getMonth()] + ' ' + timeNow.getFullYear();
+
+	const folkMonthsET = ['näärikuu','küünlakuu','paastukuu','jürikuu','lehekuu','jaanikuu','heinakuu','lõikuskuu','mihklikuu','porikuu','talvekuu','jõulukuu'];
+	//return timeNow.getDate() + '. ' + monthNamesET[timeNow.getMonth()] + ' ' + timeNow.getFullYear();
+let months; 
+
+  if(folkMonth == 1){
+	  months = folkMonthsET; 
+	  } else {
+		  months = monthNamesET;
+		  }
+	  return timeNow.getDate() + '. ' + months[timeNow.getMonth()] + ' ' + timeNow.getFullYear();
+}
+
+
+const addLeadZero = function(numValue){
+	if(numValue < 10){
+		numValue = '0' + numValue;
+		//numValue = numValue.padStart(2, '0');
+	}
+	return numValue;
+}
+
+
+const timeFormattedET = function(){
+	let timeNow = new Date();
+	let hourNow = timeNow.getHours();
+	let minuteNow = timeNow.getMinutes();
+	let secondNow = timeNow.getSeconds();
+	let timeFormatted = hourNow + ':' + addLeadZero(minuteNow) + ':' + addLeadZero(secondNow);
+	return timeFormatted;
+}
+
+const weekdayET = function(){
+	let weekday = new Date();
+	const weekdayNamesET = ['pühapäev', 'esmaspäev', 'teisipäev', 'kolmapäev', 'neljapäev', 'reede', 'laupäev'];
+	let weekDayNow = weekday.getDay();
+	return weekdayNamesET[weekDayNow];
+}
+
+//ekspordin kõik vajaliku
+module.exports = {fullDate: dateFormattedET, fullTime: timeFormattedET, fullWeekday: weekdayET}
